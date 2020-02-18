@@ -45,35 +45,6 @@ public class Page
       return this;
    }
 
-   public static final String PROPERTY_app = "app";
-
-   private StockApp app = null;
-
-   public StockApp getApp()
-   {
-      return this.app;
-   }
-
-   public Page setApp(StockApp value)
-   {
-      if (this.app != value)
-      {
-         StockApp oldValue = this.app;
-         if (this.app != null)
-         {
-            this.app = null;
-            oldValue.setContent(null);
-         }
-         this.app = value;
-         if (value != null)
-         {
-            value.setContent(this);
-         }
-         firePropertyChange("app", oldValue, value);
-      }
-      return this;
-   }
-
    protected PropertyChangeSupport listeners = null;
 
    public boolean firePropertyChange(String propertyName, Object oldValue, Object newValue)
@@ -215,6 +186,35 @@ public class Page
                firePropertyChange("content", item, null);
             }
          }
+      }
+      return this;
+   }
+
+   public static final String PROPERTY_app = "app";
+
+   private StoreApp app = null;
+
+   public StoreApp getApp()
+   {
+      return this.app;
+   }
+
+   public Page setApp(StoreApp value)
+   {
+      if (this.app != value)
+      {
+         StoreApp oldValue = this.app;
+         if (this.app != null)
+         {
+            this.app = null;
+            oldValue.setContent(null);
+         }
+         this.app = value;
+         if (value != null)
+         {
+            value.setContent(this);
+         }
+         firePropertyChange("app", oldValue, value);
       }
       return this;
    }

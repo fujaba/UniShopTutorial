@@ -2,29 +2,28 @@ package kassel.shop;
 import org.fulib.service.Service;
 import org.fulib.tables.ObjectTable;
 import org.fulib.tables.doubleTable;
-import org.fulib.tables.intTable;
 
 import java.beans.PropertyChangeSupport;
 import java.beans.PropertyChangeListener;
 
-public class StockApp  
+public class StoreApp  
 {
-   private final StockApp stockApp;
+   private final StoreApp storeApp;
    private Store uniStore;
    private Worker worker;
 
    public static void main(String[] args)
    {
-      Service.main(new String[]{StockApp.class.getName()});
+      Service.main(new String[]{StoreApp.class.getName()});
    }
 
-   public StockApp(){
-      this.stockApp = this;
+   public StoreApp(){
+      this.storeApp = this;
    }
 
    public void init() {
-      this.setId("Stock-app");
-      this.setDescription("Stock App");
+      this.setId("Store-app");
+      this.setDescription("Store App");
       login();
 
       uniStore = new Store();
@@ -47,6 +46,29 @@ public class StockApp
       System.out.println(sum);
    }
 
+   public void loginAction(String nextPage, String name, String password) {
+      worker = new Worker().setName(name).setStore(this.uniStore);
+      supply();
+   }
+
+   public void bookAction(String nextPage, String lotId, String productId, String itemsNum) {
+      System.out.println(String.format("bookAction(%s, %s, %s)", lotId, productId, itemsNum));
+      double items = Double.parseDouble(itemsNum);
+      Product product = null;
+      ObjectTable table = new ObjectTable("store", this.uniStore)
+            .expandLink("product", Store.PROPERTY_products)
+            .expandLink("id", Product.PROPERTY_id)
+            .filter(id -> id.equals(productId));
+      if (table.getTable().size() > 0 ) {
+         product = (Product) table.getTable().get(0).get(1);
+      }
+      else {
+         product = new Product().setId(productId).setDescription(productId).setStore(this.uniStore);
+      }
+      Lot lot = new Lot().setId(lotId).setProduct(product).setItems(items).setStore(this.uniStore);
+      new LogEntry().setId("book_"+lotId).setLot(lot).setWorker(this.worker).setStore(this.uniStore);
+   }
+
    public static final String PROPERTY_id = "id";
 
    private String id;
@@ -56,7 +78,7 @@ public class StockApp
       return id;
    }
 
-   public StockApp setId(String value)
+   public StoreApp setId(String value)
    {
       if (value == null ? this.id != null : ! value.equals(this.id))
       {
@@ -76,7 +98,7 @@ public class StockApp
       return description;
    }
 
-   public StockApp setDescription(String value)
+   public StoreApp setDescription(String value)
    {
       if (value == null ? this.description != null : ! value.equals(this.description))
       {
@@ -96,7 +118,7 @@ public class StockApp
       return this.content;
    }
 
-   public StockApp setContent(Page value)
+   public StoreApp setContent(Page value)
    {
       if (this.content != value)
       {
@@ -184,29 +206,6 @@ public class StockApp
 
    }
 
-   public void loginAction(String nextPage, String name, String password) {
-      worker = new Worker().setName(name).setStore(this.uniStore);
-      supply();
-   }
-
-   public void bookAction(String nextPage, String lotId, String productId, String itemsNum) {
-      System.out.println(String.format("bookAction(%s, %s, %s)", lotId, productId, itemsNum));
-      double items = Double.parseDouble(itemsNum);
-      Product product = null;
-      ObjectTable table = new ObjectTable("store", this.uniStore)
-            .expandLink("product", Store.PROPERTY_products)
-            .expandLink("id", Product.PROPERTY_id)
-            .filter(id -> id.equals(productId));
-      if (table.getTable().size() > 0 ) {
-         product = (Product) table.getTable().get(0).get(1);
-      }
-      else {
-         product = new Product().setId(productId).setDescription(productId).setStore(this.uniStore);
-      }
-      Lot lot = new Lot().setId(lotId).setProduct(product).setItems(items).setStore(this.uniStore);
-      new LogEntry().setId("book_"+lotId).setLot(lot).setWorker(this.worker).setStore(this.uniStore);
-   }
-
    public Page login() { 
       Page loginPage = new Page();
       loginPage.setId("Login-page");
@@ -253,4 +252,3 @@ public class StockApp
    }
 
 }
-

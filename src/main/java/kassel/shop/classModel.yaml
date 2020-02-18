@@ -1,5 +1,5 @@
 - c1: 	ClassModel
-  classes: 	order2 	customer3 	offer4 	store5 	stockApp6 	page7 	product8 	logEntry9 	lot10 	place11 	content12 	worker13 	
+  classes: 	order2 	customer3 	offer4 	store5 	product6 	logEntry7 	lot8 	place9 	page10 	storeApp11 	content12 	worker13 	
   defaultPropertyStyle: 	POJO
   defaultRoleType: 	"java.util.ArrayList<%s>"
   mainJavaDir: 	"src/main/java"
@@ -38,54 +38,54 @@
   propertyStyle: 	POJO
   roles: 	customers30 	workers31 	products32 	logEntries33 	lots34 	places35 	offers36 	
 
-- stockApp6: 	Clazz
+- product6: 	Clazz
   attributes: 	id37 	description38 	
-  methods: 	f39 	f40 	
-  model: 	c1
-  modified: 	false
-  name: 	StockApp
-  propertyStyle: 	POJO
-  roles: 	content41 	
-
-- page7: 	Clazz
-  attributes: 	id42 	description43 	
-  model: 	c1
-  modified: 	false
-  name: 	Page
-  propertyStyle: 	POJO
-  roles: 	app44 	content45 	
-
-- product8: 	Clazz
-  attributes: 	id46 	description47 	
   model: 	c1
   modified: 	false
   name: 	Product
   propertyStyle: 	POJO
-  roles: 	store48 	lots49 	
+  roles: 	store39 	lots40 	
 
-- logEntry9: 	Clazz
-  attributes: 	id50 	time51 	task52 	lot53 	offer54 	order55 	
+- logEntry7: 	Clazz
+  attributes: 	id41 	time42 	task43 	lot44 	offer45 	order46 	
   model: 	c1
   modified: 	false
   name: 	LogEntry
   propertyStyle: 	POJO
-  roles: 	store56 	worker57 	
+  roles: 	store47 	worker48 	
 
-- lot10: 	Clazz
-  attributes: 	id58 	items59 	
+- lot8: 	Clazz
+  attributes: 	id49 	items50 	
   model: 	c1
   modified: 	false
   name: 	Lot
   propertyStyle: 	POJO
-  roles: 	store60 	product61 	place62 	
+  roles: 	store51 	product52 	place53 	
 
-- place11: 	Clazz
-  attributes: 	id63 	
+- place9: 	Clazz
+  attributes: 	id54 	
   model: 	c1
   modified: 	false
   name: 	Place
   propertyStyle: 	POJO
-  roles: 	store64 	lots65 	
+  roles: 	store55 	lots56 	
+
+- page10: 	Clazz
+  attributes: 	id57 	description58 	
+  model: 	c1
+  modified: 	false
+  name: 	Page
+  propertyStyle: 	POJO
+  roles: 	app59 	content60 	
+
+- storeApp11: 	Clazz
+  attributes: 	id61 	description62 	
+  methods: 	f63 	f64 	
+  model: 	c1
+  modified: 	false
+  name: 	StoreApp
+  propertyStyle: 	POJO
+  roles: 	content65 	
 
 - content12: 	Clazz
   attributes: 	id66 	description67 	action68 	
@@ -258,7 +258,7 @@
   clazz: 	store5
   modified: 	false
   name: 	products
-  other: 	store48
+  other: 	store39
   propertyStyle: 	POJO
   roleType: 	"java.util.ArrayList<%s>"
 
@@ -268,7 +268,7 @@
   clazz: 	store5
   modified: 	false
   name: 	logEntries
-  other: 	store56
+  other: 	store47
   propertyStyle: 	POJO
   roleType: 	"java.util.ArrayList<%s>"
 
@@ -278,7 +278,7 @@
   clazz: 	store5
   modified: 	false
   name: 	lots
-  other: 	store60
+  other: 	store51
   propertyStyle: 	POJO
   roleType: 	"java.util.ArrayList<%s>"
 
@@ -288,7 +288,7 @@
   clazz: 	store5
   modified: 	false
   name: 	places
-  other: 	store64
+  other: 	store55
   propertyStyle: 	POJO
   roleType: 	"java.util.ArrayList<%s>"
 
@@ -303,21 +303,222 @@
   roleType: 	"java.util.ArrayList<%s>"
 
 - id37: 	Attribute
-  clazz: 	stockApp6
+  clazz: 	product6
   modified: 	false
   name: 	id
   propertyStyle: 	POJO
   type: 	String
 
 - description38: 	Attribute
-  clazz: 	stockApp6
+  clazz: 	product6
   modified: 	false
   name: 	description
   propertyStyle: 	POJO
   type: 	String
 
-- f39: 	FMethod
-  clazz: 	stockApp6
+- store39: 	AssocRole
+  aggregation: 	false
+  cardinality: 	1
+  clazz: 	product6
+  modified: 	false
+  name: 	store
+  other: 	products32
+  propertyStyle: 	POJO
+  roleType: 	"java.util.ArrayList<%s>"
+
+- lots40: 	AssocRole
+  aggregation: 	false
+  cardinality: 	42
+  clazz: 	product6
+  modified: 	false
+  name: 	lots
+  other: 	product52
+  propertyStyle: 	POJO
+  roleType: 	"java.util.ArrayList<%s>"
+
+- id41: 	Attribute
+  clazz: 	logEntry7
+  modified: 	false
+  name: 	id
+  propertyStyle: 	POJO
+  type: 	String
+
+- time42: 	Attribute
+  clazz: 	logEntry7
+  modified: 	false
+  name: 	time
+  propertyStyle: 	POJO
+  type: 	String
+
+- task43: 	Attribute
+  clazz: 	logEntry7
+  modified: 	false
+  name: 	task
+  propertyStyle: 	POJO
+  type: 	String
+
+- lot44: 	Attribute
+  clazz: 	logEntry7
+  modified: 	false
+  name: 	lot
+  propertyStyle: 	POJO
+  type: 	Lot
+
+- offer45: 	Attribute
+  clazz: 	logEntry7
+  modified: 	false
+  name: 	offer
+  propertyStyle: 	POJO
+  type: 	Offer
+
+- order46: 	Attribute
+  clazz: 	logEntry7
+  modified: 	false
+  name: 	order
+  propertyStyle: 	POJO
+  type: 	Order
+
+- store47: 	AssocRole
+  aggregation: 	false
+  cardinality: 	1
+  clazz: 	logEntry7
+  modified: 	false
+  name: 	store
+  other: 	logEntries33
+  propertyStyle: 	POJO
+  roleType: 	"java.util.ArrayList<%s>"
+
+- worker48: 	AssocRole
+  aggregation: 	false
+  cardinality: 	1
+  clazz: 	logEntry7
+  modified: 	false
+  name: 	worker
+  other: 	logEntries72
+  propertyStyle: 	POJO
+  roleType: 	"java.util.ArrayList<%s>"
+
+- id49: 	Attribute
+  clazz: 	lot8
+  modified: 	false
+  name: 	id
+  propertyStyle: 	POJO
+  type: 	String
+
+- items50: 	Attribute
+  clazz: 	lot8
+  modified: 	false
+  name: 	items
+  propertyStyle: 	POJO
+  type: 	double
+
+- store51: 	AssocRole
+  aggregation: 	false
+  cardinality: 	1
+  clazz: 	lot8
+  modified: 	false
+  name: 	store
+  other: 	lots34
+  propertyStyle: 	POJO
+  roleType: 	"java.util.ArrayList<%s>"
+
+- product52: 	AssocRole
+  aggregation: 	false
+  cardinality: 	1
+  clazz: 	lot8
+  modified: 	false
+  name: 	product
+  other: 	lots40
+  propertyStyle: 	POJO
+  roleType: 	"java.util.ArrayList<%s>"
+
+- place53: 	AssocRole
+  aggregation: 	false
+  cardinality: 	1
+  clazz: 	lot8
+  modified: 	false
+  name: 	place
+  other: 	lots56
+  propertyStyle: 	POJO
+  roleType: 	"java.util.ArrayList<%s>"
+
+- id54: 	Attribute
+  clazz: 	place9
+  modified: 	false
+  name: 	id
+  propertyStyle: 	POJO
+  type: 	String
+
+- store55: 	AssocRole
+  aggregation: 	false
+  cardinality: 	1
+  clazz: 	place9
+  modified: 	false
+  name: 	store
+  other: 	places35
+  propertyStyle: 	POJO
+  roleType: 	"java.util.ArrayList<%s>"
+
+- lots56: 	AssocRole
+  aggregation: 	false
+  cardinality: 	42
+  clazz: 	place9
+  modified: 	false
+  name: 	lots
+  other: 	place53
+  propertyStyle: 	POJO
+  roleType: 	"java.util.ArrayList<%s>"
+
+- id57: 	Attribute
+  clazz: 	page10
+  modified: 	false
+  name: 	id
+  propertyStyle: 	POJO
+  type: 	String
+
+- description58: 	Attribute
+  clazz: 	page10
+  modified: 	false
+  name: 	description
+  propertyStyle: 	POJO
+  type: 	String
+
+- app59: 	AssocRole
+  aggregation: 	false
+  cardinality: 	1
+  clazz: 	page10
+  modified: 	false
+  name: 	app
+  other: 	content65
+  propertyStyle: 	POJO
+  roleType: 	"java.util.ArrayList<%s>"
+
+- content60: 	AssocRole
+  aggregation: 	false
+  cardinality: 	42
+  clazz: 	page10
+  modified: 	false
+  name: 	content
+  other: 	page69
+  propertyStyle: 	POJO
+  roleType: 	"java.util.ArrayList<%s>"
+
+- id61: 	Attribute
+  clazz: 	storeApp11
+  modified: 	false
+  name: 	id
+  propertyStyle: 	POJO
+  type: 	String
+
+- description62: 	Attribute
+  clazz: 	storeApp11
+  modified: 	false
+  name: 	description
+  propertyStyle: 	POJO
+  type: 	String
+
+- f63: 	FMethod
+  clazz: 	storeApp11
   declaration: 	"public Page login()"
   methodBody: 	"      Page loginPage = new Page();
       loginPage.setId(\"Login-page\");
@@ -340,8 +541,8 @@
 "
   modified: 	false
 
-- f40: 	FMethod
-  clazz: 	stockApp6
+- f64: 	FMethod
+  clazz: 	storeApp11
   declaration: 	"public void supply()"
   methodBody: 	"      Page bookSupplyPage = new Page();
       bookSupplyPage.setId(\"Book-supply-page\");
@@ -367,214 +568,13 @@
 "
   modified: 	false
 
-- content41: 	AssocRole
+- content65: 	AssocRole
   aggregation: 	false
   cardinality: 	1
-  clazz: 	stockApp6
+  clazz: 	storeApp11
   modified: 	false
   name: 	content
-  other: 	app44
-  propertyStyle: 	POJO
-  roleType: 	"java.util.ArrayList<%s>"
-
-- id42: 	Attribute
-  clazz: 	page7
-  modified: 	false
-  name: 	id
-  propertyStyle: 	POJO
-  type: 	String
-
-- description43: 	Attribute
-  clazz: 	page7
-  modified: 	false
-  name: 	description
-  propertyStyle: 	POJO
-  type: 	String
-
-- app44: 	AssocRole
-  aggregation: 	false
-  cardinality: 	1
-  clazz: 	page7
-  modified: 	false
-  name: 	app
-  other: 	content41
-  propertyStyle: 	POJO
-  roleType: 	"java.util.ArrayList<%s>"
-
-- content45: 	AssocRole
-  aggregation: 	false
-  cardinality: 	42
-  clazz: 	page7
-  modified: 	false
-  name: 	content
-  other: 	page69
-  propertyStyle: 	POJO
-  roleType: 	"java.util.ArrayList<%s>"
-
-- id46: 	Attribute
-  clazz: 	product8
-  modified: 	false
-  name: 	id
-  propertyStyle: 	POJO
-  type: 	String
-
-- description47: 	Attribute
-  clazz: 	product8
-  modified: 	false
-  name: 	description
-  propertyStyle: 	POJO
-  type: 	String
-
-- store48: 	AssocRole
-  aggregation: 	false
-  cardinality: 	1
-  clazz: 	product8
-  modified: 	false
-  name: 	store
-  other: 	products32
-  propertyStyle: 	POJO
-  roleType: 	"java.util.ArrayList<%s>"
-
-- lots49: 	AssocRole
-  aggregation: 	false
-  cardinality: 	42
-  clazz: 	product8
-  modified: 	false
-  name: 	lots
-  other: 	product61
-  propertyStyle: 	POJO
-  roleType: 	"java.util.ArrayList<%s>"
-
-- id50: 	Attribute
-  clazz: 	logEntry9
-  modified: 	false
-  name: 	id
-  propertyStyle: 	POJO
-  type: 	String
-
-- time51: 	Attribute
-  clazz: 	logEntry9
-  modified: 	false
-  name: 	time
-  propertyStyle: 	POJO
-  type: 	String
-
-- task52: 	Attribute
-  clazz: 	logEntry9
-  modified: 	false
-  name: 	task
-  propertyStyle: 	POJO
-  type: 	String
-
-- lot53: 	Attribute
-  clazz: 	logEntry9
-  modified: 	false
-  name: 	lot
-  propertyStyle: 	POJO
-  type: 	Lot
-
-- offer54: 	Attribute
-  clazz: 	logEntry9
-  modified: 	false
-  name: 	offer
-  propertyStyle: 	POJO
-  type: 	Offer
-
-- order55: 	Attribute
-  clazz: 	logEntry9
-  modified: 	false
-  name: 	order
-  propertyStyle: 	POJO
-  type: 	Order
-
-- store56: 	AssocRole
-  aggregation: 	false
-  cardinality: 	1
-  clazz: 	logEntry9
-  modified: 	false
-  name: 	store
-  other: 	logEntries33
-  propertyStyle: 	POJO
-  roleType: 	"java.util.ArrayList<%s>"
-
-- worker57: 	AssocRole
-  aggregation: 	false
-  cardinality: 	1
-  clazz: 	logEntry9
-  modified: 	false
-  name: 	worker
-  other: 	logEntries72
-  propertyStyle: 	POJO
-  roleType: 	"java.util.ArrayList<%s>"
-
-- id58: 	Attribute
-  clazz: 	lot10
-  modified: 	false
-  name: 	id
-  propertyStyle: 	POJO
-  type: 	String
-
-- items59: 	Attribute
-  clazz: 	lot10
-  modified: 	false
-  name: 	items
-  propertyStyle: 	POJO
-  type: 	double
-
-- store60: 	AssocRole
-  aggregation: 	false
-  cardinality: 	1
-  clazz: 	lot10
-  modified: 	false
-  name: 	store
-  other: 	lots34
-  propertyStyle: 	POJO
-  roleType: 	"java.util.ArrayList<%s>"
-
-- product61: 	AssocRole
-  aggregation: 	false
-  cardinality: 	1
-  clazz: 	lot10
-  modified: 	false
-  name: 	product
-  other: 	lots49
-  propertyStyle: 	POJO
-  roleType: 	"java.util.ArrayList<%s>"
-
-- place62: 	AssocRole
-  aggregation: 	false
-  cardinality: 	1
-  clazz: 	lot10
-  modified: 	false
-  name: 	place
-  other: 	lots65
-  propertyStyle: 	POJO
-  roleType: 	"java.util.ArrayList<%s>"
-
-- id63: 	Attribute
-  clazz: 	place11
-  modified: 	false
-  name: 	id
-  propertyStyle: 	POJO
-  type: 	String
-
-- store64: 	AssocRole
-  aggregation: 	false
-  cardinality: 	1
-  clazz: 	place11
-  modified: 	false
-  name: 	store
-  other: 	places35
-  propertyStyle: 	POJO
-  roleType: 	"java.util.ArrayList<%s>"
-
-- lots65: 	AssocRole
-  aggregation: 	false
-  cardinality: 	42
-  clazz: 	place11
-  modified: 	false
-  name: 	lots
-  other: 	place62
+  other: 	app59
   propertyStyle: 	POJO
   roleType: 	"java.util.ArrayList<%s>"
 
@@ -605,7 +605,7 @@
   clazz: 	content12
   modified: 	false
   name: 	page
-  other: 	content45
+  other: 	content60
   propertyStyle: 	POJO
   roleType: 	"java.util.ArrayList<%s>"
 
@@ -629,7 +629,7 @@
   clazz: 	worker13
   modified: 	false
   name: 	logEntries
-  other: 	worker57
+  other: 	worker48
   propertyStyle: 	POJO
   roleType: 	"java.util.ArrayList<%s>"
 

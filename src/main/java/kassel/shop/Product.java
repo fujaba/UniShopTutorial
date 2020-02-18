@@ -12,7 +12,6 @@ public class Product
       return sum;
    }
 
-
    public static final String PROPERTY_id = "id";
 
    private String id;

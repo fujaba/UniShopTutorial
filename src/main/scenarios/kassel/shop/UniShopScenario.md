@@ -8,19 +8,19 @@ The UniStore has the wall-time "Wednesday 09:30".
 There are Workers with name Alice and Bob. 
 The UniStore has workers Alice and Bob. 
 
-// We call buildStockData on StockApp.
+// We call buildStockData on StoreApp.
 There is a product with id HoodieXL and with description "Hoody Black XL".
 HoodieXL has store and is one of the products of UniStore.
 ![UniStore](startSituation.svg)
 
 // A new package of hoddies arrives.
-There is a Stock-App with id Stock-app
-and with description "Stock App".
+There is a Store-App with id Store-app
+and with description "Store App".
 
-We call login on Stock-app.
+We call login on Store-app.
 Login creates a page with id Login-page
 and with description "Login | button Supply | button Store".
-Login-page has app and is content of Stock-App.
+Login-page has app and is content of Store-app.
 Login creates a content with id Name-in and with description "input name?".
 Name-in has page and is one of the content of Login-Page.
 Login creates a content with id Pass-in and with description "input password?"
@@ -30,10 +30,10 @@ and with action "loginAction Name-in Pass-in Supply"
 and with page Login-Page.
 Login answers with Login-Page.
 
-We call supply on Stock-app.
+We call supply on Store-app.
 Supply creates a page with id Book-supply-page
 and with description "button Login | Supply | button Store"
-and with app Stock-app.
+and with app Store-app.
 Supply creates a content with id Lot-id-in and with description "input lot id?"
 and with page Book-supply-page.
 Supply creates a content with id Product-id-in and with description "input product id?"

@@ -28,18 +28,18 @@
       alice.setName(\"Alice\");
       bob.setName(\"Bob\");
       uniStore.withWorkers(alice, bob);
-      // We call buildStockData on StockApp.
+      // We call buildStockData on StoreApp.
       Product hoodieXL = new Product();
       hoodieXL.setId(\"HoodieXL\");
       hoodieXL.setDescription(\"Hoody Black XL\");
       hoodieXL.setStore(uniStore);
       FulibTools.objectDiagrams().dumpSVG(\"src/main/scenarios/kassel/shop/startSituation.svg\", uniStore);
       // A new package of hoddies arrives.
-      StockApp stockApp = new StockApp();
-      stockApp.setId(\"Stock-app\");
-      stockApp.setDescription(\"Stock App\");
-      Page loginPage = stockApp.login();
-      stockApp.supply();
+      StoreApp storeApp = new StoreApp();
+      storeApp.setId(\"Store-app\");
+      storeApp.setDescription(\"Store App\");
+      Page loginPage = storeApp.login();
+      storeApp.supply();
       LogEntry supply0931 = new LogEntry();
       supply0931.setId(\"Supply0931\");
       supply0931.setTime(\"09:31\");
