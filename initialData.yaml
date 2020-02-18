@@ -1,0 +1,34 @@
+- s1: 	Store
+  labels: 	l2 	
+  lots: 	l12013 	l12024 	l12035 	
+  products: 	hoodieXL6 	
+  wallTime: 	"Wednesday 09:30"
+
+- l2: 	Label
+  text: 	"Great new Hoodies 24â‚¬"
+
+- l12013: 	Lot
+  id: 	l1201
+  items: 	20.0
+  product: 	hoodieXL6
+  store: 	s1
+
+- l12024: 	Lot
+  id: 	l1202
+  items: 	30.0
+  product: 	hoodieXL6
+  store: 	s1
+
+- l12035: 	Lot
+  id: 	l1203
+  items: 	25.0
+  product: 	hoodieXL6
+  store: 	s1
+
+- hoodieXL6: 	Product
+  description: 	"Hoody Black XL"
+  id: 	HoodieXL
+  items: 	75.0
+  lots: 	l12013 	l12024 	l12035 	
+  store: 	s1
+
