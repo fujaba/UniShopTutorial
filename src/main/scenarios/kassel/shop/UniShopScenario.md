@@ -87,4 +87,3 @@ Buy1101 has order Order1101.
 ![UniStore](hoodieBought.yaml)
 ![UniStore](hoodieBought.tables.html)
 
-

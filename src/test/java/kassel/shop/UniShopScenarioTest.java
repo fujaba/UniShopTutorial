@@ -95,4 +95,31 @@ public class UniShopScenarioTest
       MockupTools.htmlTool().dump("src/main/scenarios/kassel/shop/hoodieBought.tables.html", uniStore);
    }
 
+   @Test
+   public void demoModelQueries() {
+      Store uniStore = new Store().setWallTime("Uni Store 9:00");
+
+      Product tShirt = new Product().setId("tShirt").setDescription("Uni Shirt").setStore(uniStore);
+      Product mug = new Product().setId("mug").setDescription("Mug").setStore(uniStore);
+
+      new Lot();
+
+//      ProductTable table = new CustomerTable(albert)
+//            .expandOrders("order")
+//            .filter(order -> order.getState().equals("confirmed"))
+//            .expandProducts("product");
+//
+//      System.out.println(table);
+
+      /*
+      | Customer 	| order 	| product 	|
+      |  --- 	|  --- 	|  --- 	|
+      | Albert Willi Allee 73 	| #43 SE Group confirmed 	| mug Mug 	|
+      | Albert Willi Allee 73 	| #43 SE Group confirmed 	| noteBook Notebook 	|
+      */
+
+   }
+
+
+
 }

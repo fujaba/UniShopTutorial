@@ -1,5 +1,7 @@
 package kassel.shop;
+import org.fulib.FulibTools;
 import org.fulib.service.Service;
+import org.fulib.tables.FulibTable;
 import org.fulib.tables.ObjectTable;
 import org.fulib.tables.doubleTable;
 
@@ -37,11 +39,17 @@ public class StoreApp
       new Lot().setId("l1202").setItems(30).setProduct(hoodieXL).setStore(uniStore);
       new Lot().setId("l1203").setItems(25).setProduct(hoodieXL).setStore(uniStore);
 
+      Label label = new Label();
+      label.setText("Great new Hoodies 24€");
+      this.uniStore.getLabels().add(label);
+
       ObjectTable hoodieTable = new ObjectTable("product", hoodieXL);
       ObjectTable lotTable = hoodieTable.expandLink("lot", Product.PROPERTY_lots);
       doubleTable itemsTable = lotTable.expandDouble("items", Lot.PROPERTY_items);
       double sum = itemsTable.sum();
 
+      FulibTools.objectDiagrams().dumpYaml("initialData.yaml", this.uniStore);
+      FulibTools.objectDiagrams().dumpSVG("initialData.svg", this.uniStore);
       System.out.println(hoodieTable);
       System.out.println(sum);
    }

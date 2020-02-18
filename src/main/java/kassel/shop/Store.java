@@ -1,9 +1,17 @@
 package kassel.shop;
 import java.beans.PropertyChangeSupport;
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 
 public class Store  
 {
+
+   private ArrayList<Label> labels = new ArrayList<>();
+
+   public ArrayList<Label> getLabels()
+   {
+      return labels;
+   }
 
    public static final String PROPERTY_wallTime = "wallTime";
 
