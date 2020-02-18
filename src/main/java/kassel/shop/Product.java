@@ -4,6 +4,14 @@ import java.beans.PropertyChangeListener;
 
 public class Product  
 {
+   public double getItems() {
+      double sum = 0.0;
+      for (Lot lot : this.getLots()) {
+         sum += lot.getItems();
+      }
+      return sum;
+   }
+
 
    public static final String PROPERTY_id = "id";
 
