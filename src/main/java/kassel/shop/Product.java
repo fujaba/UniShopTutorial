@@ -6,8 +6,8 @@ public class Product
 {
    public double getItems() {
       double sum = 0.0;
-      for (Lot lot : this.getLots()) {
-         sum += lot.getItems();
+      for (Pack pack : this.getPacks()) {
+         sum += pack.getItems();
       }
       return sum;
    }
@@ -81,78 +81,19 @@ public class Product
       return this;
    }
 
-   public static final java.util.ArrayList<Lot> EMPTY_lots = new java.util.ArrayList<Lot>()
-   { @Override public boolean add(Lot value){ throw new UnsupportedOperationException("No direct add! Use xy.withLots(obj)"); }};
+   public static final java.util.ArrayList<Pack> EMPTY___PACKS = new java.util.ArrayList<Pack>()
+   { @Override public boolean add(Pack value){ throw new UnsupportedOperationException("No direct add! Use xy.withLots(obj)"); }};
 
-   public static final String PROPERTY_lots = "lots";
+   private java.util.ArrayList<Pack> packs = null;
 
-   private java.util.ArrayList<Lot> lots = null;
-
-   public java.util.ArrayList<Lot> getLots()
+   public java.util.ArrayList<Pack> getPacks()
    {
-      if (this.lots == null)
+      if (this.packs == null)
       {
-         return EMPTY_lots;
+         return EMPTY_packs;
       }
 
-      return this.lots;
-   }
-
-   public Product withLots(Object... value)
-   {
-      if(value==null) return this;
-      for (Object item : value)
-      {
-         if (item == null) continue;
-         if (item instanceof java.util.Collection)
-         {
-            for (Object i : (java.util.Collection) item)
-            {
-               this.withLots(i);
-            }
-         }
-         else if (item instanceof Lot)
-         {
-            if (this.lots == null)
-            {
-               this.lots = new java.util.ArrayList<Lot>();
-            }
-            if ( ! this.lots.contains(item))
-            {
-               this.lots.add((Lot)item);
-               ((Lot)item).setProduct(this);
-               firePropertyChange("lots", null, item);
-            }
-         }
-         else throw new IllegalArgumentException();
-      }
-      return this;
-   }
-
-   public Product withoutLots(Object... value)
-   {
-      if (this.lots == null || value==null) return this;
-      for (Object item : value)
-      {
-         if (item == null) continue;
-         if (item instanceof java.util.Collection)
-         {
-            for (Object i : (java.util.Collection) item)
-            {
-               this.withoutLots(i);
-            }
-         }
-         else if (item instanceof Lot)
-         {
-            if (this.lots.contains(item))
-            {
-               this.lots.remove((Lot)item);
-               ((Lot)item).setProduct(null);
-               firePropertyChange("lots", item, null);
-            }
-         }
-      }
-      return this;
+      return this.packs;
    }
 
    protected PropertyChangeSupport listeners = null;
@@ -221,9 +162,71 @@ public class Product
    {
       this.setStore(null);
 
-      this.withoutLots(this.getLots().clone());
+      this.withoutPacks(this.getPacks().clone());
 
 
+   }
+
+   public static final java.util.ArrayList<Pack> EMPTY_packs = new java.util.ArrayList<Pack>()
+   { @Override public boolean add(Pack value){ throw new UnsupportedOperationException("No direct add! Use xy.withPacks(obj)"); }};
+
+   public static final String PROPERTY_packs = "packs";
+
+   public Product withPacks(Object... value)
+   {
+      if(value==null) return this;
+      for (Object item : value)
+      {
+         if (item == null) continue;
+         if (item instanceof java.util.Collection)
+         {
+            for (Object i : (java.util.Collection) item)
+            {
+               this.withPacks(i);
+            }
+         }
+         else if (item instanceof Pack)
+         {
+            if (this.packs == null)
+            {
+               this.packs = new java.util.ArrayList<Pack>();
+            }
+            if ( ! this.packs.contains(item))
+            {
+               this.packs.add((Pack)item);
+               ((Pack)item).setProduct(this);
+               firePropertyChange("packs", null, item);
+            }
+         }
+         else throw new IllegalArgumentException();
+      }
+      return this;
+   }
+
+   public Product withoutPacks(Object... value)
+   {
+      if (this.packs == null || value==null) return this;
+      for (Object item : value)
+      {
+         if (item == null) continue;
+         if (item instanceof java.util.Collection)
+         {
+            for (Object i : (java.util.Collection) item)
+            {
+               this.withoutPacks(i);
+            }
+         }
+         else if (item instanceof Pack)
+         {
+            if (this.packs.contains(item))
+            {
+               this.packs.remove((Pack)item);
+               ((Pack)item).setProduct(null);
+               firePropertyChange("packs", item, null);
+            }
+         }
+      }
+      return this;
    }
 
 }

@@ -34,33 +34,33 @@ We call supply on Store-app.
 Supply creates a page with id Book-supply-page
 and with description "button Login | Supply | button Store"
 and with app Store-app.
-Supply creates a content with id Lot-id-in and with description "input lot id?"
+Supply creates a content with id Pack-id-in and with description "input pack id?"
 and with page Book-supply-page.
 Supply creates a content with id Product-id-in and with description "input product id?"
 and with page Book-supply-page.
 Supply creates a content with id Items-in and with description "input number of items?"
 and with page Book-supply-page.
 Supply creates a content with id Book-button and with description "button book"
-and with action "bookAction Lot-id-in Product-id-in Items-in Supply"
+and with action "bookAction Pack-id-in Product-id-in Items-in Supply"
 and with page Book-supply-page.
 
 We create a log-entry with id Supply0931 and with time "09:31" and 
 with task book supply.
 Supply0931 has store and is one of the log-entries of UniStore. 
 Supply0931 has worker and is one of the log-entries of Alice. 
-We create a lot with id Lot0931 and with 40.0 items.
-Lot0931 has product and is one of the lots of HoodieXL.
-Lot0931 has store and is one of the lots of UniStore.
-Supply0931 has lot Lot0931.
+We create a pack with id Pack0931 and with 40.0 items.
+Pack0931 has product and is one of the Packs of HoodieXL.
+Pack0931 has store and is one of the Packs of UniStore.
+Supply0931 has pack Pack0931.
 ![UniStore](hoodiesBooked.svg)
 
 // Bob stores the hoodies on shelf 4 column 2 board 1.
 We create a log-entry with id Stored0935 and with time "09:35" and 
-with task store supply and with store UniStore and with lot Lot0931
+with task store supply and with store UniStore and with pack Pack0931
 and with worker Bob.
 There is a place with id S4-c2-b1.
 S4-c2-b1 has store and is one of the places of UniStore.
-Lot0931 has place and is one of the lots of S4-c2-b1.
+Pack0931 has place and is one of the Packs of S4-c2-b1.
 ![UniStore](hoodiesStored.svg)
 
 // Carli makes a special offer

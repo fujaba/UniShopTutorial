@@ -1,6 +1,9 @@
 package kassel.shop;
 import org.fulib.FulibTools;
 import org.fulib.scenarios.MockupTools;
+import org.fulib.tables.ObjectTable;
+import org.fulib.tables.StringTable;
+import org.fulib.tables.doubleTable;
 import org.junit.Test;
 
 public class UniShopScenarioTest  
@@ -35,12 +38,12 @@ public class UniShopScenarioTest
       supply0931.setTask("book supply");
       supply0931.setStore(uniStore);
       supply0931.setWorker(alice);
-      Lot lot0931 = new Lot();
-      lot0931.setId("Lot0931");
-      lot0931.setItems(40.0);
-      lot0931.setProduct(hoodieXL);
-      lot0931.setStore(uniStore);
-      supply0931.setLot(lot0931);
+      Pack pack0931 = new Pack();
+      pack0931.setId("Pack0931");
+      pack0931.setItems(40.0);
+      pack0931.setProduct(hoodieXL);
+      pack0931.setStore(uniStore);
+      supply0931.setPack(pack0931);
       FulibTools.objectDiagrams().dumpSVG("src/main/scenarios/kassel/shop/hoodiesBooked.svg", uniStore);
       // Bob stores the hoodies on shelf 4 column 2 board 1.
       LogEntry stored0935 = new LogEntry();
@@ -48,12 +51,12 @@ public class UniShopScenarioTest
       stored0935.setTime("09:35");
       stored0935.setTask("store supply");
       stored0935.setStore(uniStore);
-      stored0935.setLot(lot0931);
+      stored0935.setPack(pack0931);
       stored0935.setWorker(bob);
       Place s4C2B1 = new Place();
       s4C2B1.setId("S4-c2-b1");
       s4C2B1.setStore(uniStore);
-      lot0931.setPlace(s4C2B1);
+      pack0931.setPlace(s4C2B1);
       FulibTools.objectDiagrams().dumpSVG("src/main/scenarios/kassel/shop/hoodiesStored.svg", uniStore);
       // Carli makes a special offer
       Worker carli = new Worker();
@@ -100,26 +103,19 @@ public class UniShopScenarioTest
       Store uniStore = new Store().setWallTime("Uni Store 9:00");
 
       Product tShirt = new Product().setId("tShirt").setDescription("Uni Shirt").setStore(uniStore);
-      Product mug = new Product().setId("mug").setDescription("Mug").setStore(uniStore);
+      Product mug = new Product().setId("mug").setDescription("Coffee Mug").setStore(uniStore);
 
-      new Lot();
+      new Pack().setId("p1").setProduct(tShirt).setItems(42).setStore(uniStore);
+      new Pack().setId("p2").setProduct(tShirt).setItems(23).setStore(uniStore);
+      new Pack().setId("p3").setProduct(mug).setItems(25).setStore(uniStore);
 
-//      ProductTable table = new CustomerTable(albert)
-//            .expandOrders("order")
-//            .filter(order -> order.getState().equals("confirmed"))
-//            .expandProducts("product");
-//
-//      System.out.println(table);
-
-      /*
-      | Customer 	| order 	| product 	|
-      |  --- 	|  --- 	|  --- 	|
-      | Albert Willi Allee 73 	| #43 SE Group confirmed 	| mug Mug 	|
-      | Albert Willi Allee 73 	| #43 SE Group confirmed 	| noteBook Notebook 	|
-      */
-
+      ObjectTable storeTable = new ObjectTable("store", uniStore);
+      ObjectTable productTable = storeTable.expandLink("product", Store.PROPERTY_products);
+      ObjectTable packTable = productTable.expandLink("pack", Product.PROPERTY_packs);
+      doubleTable doubleTable = packTable.expandDouble("items", Pack.PROPERTY_items);
+      productTable.filter(o -> ((Product) o).getId().equals("tShirt"));
+      System.out.println(productTable);
+      System.out.println(doubleTable.sum());
    }
-
-
 
 }

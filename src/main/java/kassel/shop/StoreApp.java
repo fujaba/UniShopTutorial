@@ -1,7 +1,6 @@
 package kassel.shop;
 import org.fulib.FulibTools;
 import org.fulib.service.Service;
-import org.fulib.tables.FulibTable;
 import org.fulib.tables.ObjectTable;
 import org.fulib.tables.doubleTable;
 
@@ -35,17 +34,17 @@ public class StoreApp
             .setDescription("Hoody Black XL")
             .setStore(uniStore);
 
-      new Lot().setId("l1201").setItems(20).setProduct(hoodieXL).setStore(uniStore);
-      new Lot().setId("l1202").setItems(30).setProduct(hoodieXL).setStore(uniStore);
-      new Lot().setId("l1203").setItems(25).setProduct(hoodieXL).setStore(uniStore);
+      new Pack().setId("l1201").setItems(20).setProduct(hoodieXL).setStore(uniStore);
+      new Pack().setId("l1202").setItems(30).setProduct(hoodieXL).setStore(uniStore);
+      new Pack().setId("l1203").setItems(25).setProduct(hoodieXL).setStore(uniStore);
 
       Label label = new Label();
       label.setText("Great new Hoodies 24€");
       this.uniStore.getLabels().add(label);
 
       ObjectTable hoodieTable = new ObjectTable("product", hoodieXL);
-      ObjectTable lotTable = hoodieTable.expandLink("lot", Product.PROPERTY_lots);
-      doubleTable itemsTable = lotTable.expandDouble("items", Lot.PROPERTY_items);
+      ObjectTable lotTable = hoodieTable.expandLink("lot", Product.PROPERTY_packs);
+      doubleTable itemsTable = lotTable.expandDouble("items", Pack.PROPERTY_items);
       double sum = itemsTable.sum();
 
       FulibTools.objectDiagrams().dumpYaml("initialData.yaml", this.uniStore);
@@ -73,8 +72,8 @@ public class StoreApp
       else {
          product = new Product().setId(productId).setDescription(productId).setStore(this.uniStore);
       }
-      Lot lot = new Lot().setId(lotId).setProduct(product).setItems(items).setStore(this.uniStore);
-      new LogEntry().setId("book_"+lotId).setLot(lot).setWorker(this.worker).setStore(this.uniStore);
+      Pack pack = new Pack().setId(lotId).setProduct(product).setItems(items).setStore(this.uniStore);
+      new LogEntry().setId("book_"+lotId).setPack(pack).setWorker(this.worker).setStore(this.uniStore);
    }
 
    public static final String PROPERTY_id = "id";
@@ -240,10 +239,10 @@ public class StoreApp
       bookSupplyPage.setId("Book-supply-page");
       bookSupplyPage.setDescription("button Login | Supply | button Store");
       bookSupplyPage.setApp(this);
-      Content lotIdIn = new Content();
-      lotIdIn.setId("Lot-id-in");
-      lotIdIn.setDescription("input lot id?");
-      lotIdIn.setPage(bookSupplyPage);
+      Content packIdIn = new Content();
+      packIdIn.setId("Pack-id-in");
+      packIdIn.setDescription("input pack id?");
+      packIdIn.setPage(bookSupplyPage);
       Content productIdIn = new Content();
       productIdIn.setId("Product-id-in");
       productIdIn.setDescription("input product id?");
@@ -255,7 +254,7 @@ public class StoreApp
       Content bookButton = new Content();
       bookButton.setId("Book-button");
       bookButton.setDescription("button book");
-      bookButton.setAction("bookAction Lot-id-in Product-id-in Items-in Supply");
+      bookButton.setAction("bookAction Pack-id-in Product-id-in Items-in Supply");
       bookButton.setPage(bookSupplyPage);
    }
 

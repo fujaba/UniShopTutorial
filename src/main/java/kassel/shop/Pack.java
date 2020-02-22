@@ -2,7 +2,7 @@ package kassel.shop;
 import java.beans.PropertyChangeSupport;
 import java.beans.PropertyChangeListener;
 
-public class Lot  
+public class Pack  
 {
 
    public static final String PROPERTY_id = "id";
@@ -14,7 +14,7 @@ public class Lot
       return id;
    }
 
-   public Lot setId(String value)
+   public Pack setId(String value)
    {
       if (value == null ? this.id != null : ! value.equals(this.id))
       {
@@ -34,7 +34,7 @@ public class Lot
       return this.store;
    }
 
-   public Lot setStore(Store value)
+   public Pack setStore(Store value)
    {
       if (this.store != value)
       {
@@ -42,12 +42,12 @@ public class Lot
          if (this.store != null)
          {
             this.store = null;
-            oldValue.withoutLots(this);
+            oldValue.withoutPacks(this);
          }
          this.store = value;
          if (value != null)
          {
-            value.withLots(this);
+            value.withPacks(this);
          }
          firePropertyChange("store", oldValue, value);
       }
@@ -63,7 +63,7 @@ public class Lot
       return this.product;
    }
 
-   public Lot setProduct(Product value)
+   public Pack setProduct(Product value)
    {
       if (this.product != value)
       {
@@ -71,12 +71,12 @@ public class Lot
          if (this.product != null)
          {
             this.product = null;
-            oldValue.withoutLots(this);
+            oldValue.withoutPacks(this);
          }
          this.product = value;
          if (value != null)
          {
-            value.withLots(this);
+            value.withPacks(this);
          }
          firePropertyChange("product", oldValue, value);
       }
@@ -92,7 +92,7 @@ public class Lot
       return this.place;
    }
 
-   public Lot setPlace(Place value)
+   public Pack setPlace(Place value)
    {
       if (this.place != value)
       {
@@ -100,12 +100,12 @@ public class Lot
          if (this.place != null)
          {
             this.place = null;
-            oldValue.withoutLots(this);
+            oldValue.withoutPacks(this);
          }
          this.place = value;
          if (value != null)
          {
-            value.withLots(this);
+            value.withPacks(this);
          }
          firePropertyChange("place", oldValue, value);
       }
@@ -179,7 +179,7 @@ public class Lot
       return items;
    }
 
-   public Lot setItems(double value)
+   public Pack setItems(double value)
    {
       if (value != this.items)
       {

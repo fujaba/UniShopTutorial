@@ -65,22 +65,20 @@ public class LogEntry
       return this;
    }
 
-   public static final String PROPERTY_lot = "lot";
+   private Pack pack;
 
-   private Lot lot;
-
-   public Lot getLot()
+   public Pack getPack()
    {
-      return lot;
+      return pack;
    }
 
-   public LogEntry setLot(Lot value)
+   public LogEntry setPack(Pack value)
    {
-      if (value != this.lot)
+      if (value != this.pack)
       {
-         Lot oldValue = this.lot;
-         this.lot = value;
-         firePropertyChange("lot", oldValue, value);
+         Pack oldValue = this.pack;
+         this.pack = value;
+         firePropertyChange("pack", oldValue, value);
       }
       return this;
    }
@@ -233,6 +231,15 @@ public class LogEntry
       return true;
    }
 
+   public void removeYou()
+   {
+      this.setStore(null);
+      this.setWorker(null);
+
+   }
+
+   public static final String PROPERTY_pack = "pack";
+
    @Override
    public String toString()
    {
@@ -244,13 +251,6 @@ public class LogEntry
 
 
       return result.substring(1);
-   }
-
-   public void removeYou()
-   {
-      this.setStore(null);
-      this.setWorker(null);
-
    }
 
 }
